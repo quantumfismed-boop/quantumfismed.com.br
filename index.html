@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quantum FisMed — Educação e Consultoria em Física Médica</title>
+  <meta name="description" content="Quantum FisMed: cursos, materiais e consultoria em Física Médica — Radiologia, TC, RM, US, Medicina Nuclear e Radioterapia. Conteúdo baseado em evidências e foco em segurança do paciente." />
+  <style>
+    /* ======= Design System (cores claras, sem 'lousa') ======= */
+    :root{
+      --bg: #ffffff;
+      --bg-soft: #f8fafc; /* slate-50 */
+      --brand: #0ea5e9;   /* sky-500 */
+      --brand-600:#0284c7;/* sky-600 */
+      --text:#0f172a;     /* slate-900 */
+      --muted:#64748b;    /* slate-500 */
+      --ring:#bae6fd;     /* sky-200 */
+      --card:#ffffff;
+      --shadow: 0 8px 24px rgba(15,23,42,.08);
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg)}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:600}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{background:var(--brand-600)}
+    .btn-ghost{border-color:#e2e8f0}
+    .btn-ghost:hover{background:#f1f5f9}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--bg-soft);border:1px solid #e2e8f0;color:var(--muted);font-size:14px}
+    .section{padding:72px 0}
+    .section h2{font-size:clamp(1.6rem,2.5vw,2.2rem);margin:0 0 12px}
+    .section p.lead{color:var(--muted);max-width:60ch}
+    /* ======= Header / Nav ======= */
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter: blur(8px);border-bottom:1px solid #e2e8f0;z-index:50}
+    .nav{display:flex;align-items:center;gap:28px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo-mark{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#0f172a;color:#fff;box-shadow:var(--shadow)}
+    .nav a{color:#334155}
+    .nav a:hover{color:#0f172a}
+    .menu-btn{display:none;border:1px solid #e2e8f0;background:#fff;border-radius:10px;padding:8px}
+    /* ======= Hero ======= */
+    .hero{position:relative;overflow:hidden}
+    .hero .bg-shapes{position:absolute;inset:0;pointer-events:none}
+    .blob{position:absolute;border-radius:999px;filter:blur(40px);opacity:.25}
+    .blob.a{width:300px;height:300px;background:#bae6fd;left:-80px;top:-80px}
+    .blob.b{width:360px;height:360px;background:#c7d2fe;right:-120px;bottom:-120px}
+    .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:84px 0}
+    .hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;margin:0}
+    .hero p{color:var(--muted)}
+    .hero-card{background:var(--card);border:1px solid #e2e8f0;border-radius:20px;box-shadow:var(--shadow);padding:18px}
+    .hero-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .tile{border:1px solid #e2e8f0;border-radius:14px;padding:14px;text-align:center}
+    .tile small{display:block;color:var(--muted)}
+    /* ======= Grids ======= */
+    .grid{display:grid;gap:20px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .icon{width:22px;height:22px;color:var(--brand)}
+    .item h3{margin:10px 0 6px;font-size:1.05rem}
+    .muted{color:var(--muted)}
+    /* ======= Materiais ======= */
+    .list{display:grid;gap:12px}
+    .list a{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #e2e8f0;border-radius:12px}
+    .list svg{flex:0 0 20px;color:var(--brand)}
+    /* ======= Contato ======= */
+    form{display:grid;gap:12px}
+    input, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0;outline:none}
+    input:focus, textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
+    textarea{min-height:120px;resize:vertical}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    /* ======= Footer ======= */
+    footer{background:var(--bg-soft);border-top:1px solid #e2e8f0;padding:28px 0;color:#475569}
+    .small{font-size:.92rem}
+    /* ======= Responsivo ======= */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .menu-btn{display:inline-flex}
+      .nav{display:none}
+      .nav.mobile{display:grid;gap:12px;padding:12px 0}
+      .nav.mobile a{padding:10px;border-radius:10px}
+      header[data-open="true"] .nav.mobile{display:grid}
+    }
+    /* âncoras com margem para não ficarem escondidas sob o header */
+    :target{scroll-margin-top:90px}
+    /* Skip link acessível */
+    .skip{position:absolute;left:-9999px;top:auto}
+    .skip:focus{left:16px;top:16px;background:#fff;border:1px solid #e2e8f0;padding:8px 12px;border-radius:10px;z-index:999}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
+  
+  <!-- Header -->
+  <header id="topo" aria-label="Barra de navegação" data-open="false">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;">
+      <a href="#topo" class="logo" aria-label="Quantum FisMed — Início">
+        <span class="logo-mark">QF</span>
+        <span>Quantum FisMed</span>
+      </a>
+      <nav class="nav" aria-label="Menu principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#materiais">Materiais</a>
+        <a href="#contato" class="btn btn-primary">Fale conosco</a>
+      </nav>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu-mobile" id="btnMenu" title="Abrir menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M4 6h16M4 12h16M4 18h16" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="menu-mobile" class="container">
+      <nav class="nav mobile" aria-label="Menu móvel">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#materiais">Materiais</a>
+        <a href="#contato" class="btn btn-primary" style="width:max-content">Fale conosco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="bg-shapes" aria-hidden="true">
+        <div class="blob a"></div>
+        <div class="blob b"></div>
+      </div>
+      <div class="container hero-grid">
+        <div>
+          <div class="badge" aria-label="Slogan">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+            Educação & Consultoria em Física Médica
+          </div>
+          <h1 style="margin-top:12px">Entre ondas e partículas — <span style="color:#334155;font-weight:600">Física Médica para quem cuida de gente</span></h1>
+          <p style="margin:14px 0 0 0">Capacitação, materiais didáticos e consultoria em qualidade e segurança para Radiologia, Tomografia, Ressonância, Ultrassom, Medicina Nuclear e Radioterapia.</p>
+          <div style="display:flex;gap:10px;margin-top:18px">
+            <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+            <a class="btn btn-ghost" href="#cursos">Ver cursos</a>
+          </div>
+          <div style="display:flex;gap:18px;margin-top:22px;color:#475569">
+            <span class="badge"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Baseado em evidências</span>
+            <span class="badge"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Segurança do paciente</span>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Áreas de atuação">
+          <div class="hero-tiles">
+            <div class="tile"><strong>Radiologia</strong><small>DR / CR</small></div>
+            <div class="tile"><strong>Tomografia</strong><small>Qualidade & dose</small></div>
+            <div class="tile"><strong>Ressonância</strong><small>Protocolos</small></div>
+            <div class="tile"><strong>Ultrassom</strong><small>Boas práticas</small></div>
+            <div class="tile"><strong>Med. Nuclear</strong><small>Proteção</small></div>
+            <div class="tile"><strong>Radioterapia</strong><small>Comissionamento</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="section">
+      <div class="container grid grid-2">
+        <div class="card">
+          <h2>Sobre o Quantum FisMed</h2>
+          <p class="lead">Atuamos com ensino e consultoria em Física Médica, desenvolvendo cursos, materiais e programas personalizados para instituições de saúde e educação.</p>
+          <ul class="muted" style="margin:12px 0 0 16px;line-height:1.7">
+            <li>Conteúdo alinhado às diretrizes nacionais (ANVISA, CNEN, MS).</li>
+            <li>Metodologia prática com foco em qualidade de imagem e segurança.</li>
+            <li>Materiais didáticos e avaliação de aprendizado.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Como podemos ajudar</h2>
+          <div class="grid grid-2">
+            <div class="item">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18v12H3z"/><path d="M7 20h10"/></svg>
+              <h3>Capacitações</h3>
+              <p class="muted">Programas anuais de educação permanente e treinamentos introdutórios.</p>
+            </div>
+            <div class="item">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 4v6"/></svg>
+              <h3>Consultoria</h3>
+              <p class="muted">Protocolos, indicadores (KPI), QA e proteção radiológica.</p>
+            </div>
+            <div class="item">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V5a2 2 0 0 1 2-2h12"/><path d="M16 3l5 5-11 11H5a1 1 0 0 1-1-1v-4L16 3z"/></svg>
+              <h3>Materiais</h3>
+              <p class="muted">Apostilas, mapas mentais, slides e checklists prontos para uso.</p>
+            </div>
+            <div class="item">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H4"/><path d="M5 7l-2 3 2 3"/><path d="M19 17l2-3-2-3"/></svg>
+              <h3>Implantação</h3>
+              <p class="muted">Planos de aula, trilhas de aprendizagem e métricas de eficácia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="section" style="background:var(--bg-soft)">
+      <div class="container">
+        <h2>Serviços</h2>
+        <p class="lead">Consultoria técnica e educacional sob medida para sua realidade.</p>
+        <div class="grid grid-3" style="margin-top:18px">
+          <div class="card">
+            <h3>Radiologia Digital (DR/CR)</h3>
+            <p class="muted">Qualidade de imagem, testes de constância, calibração de monitores e otimização de dose.</p>
+          </div>
+          <div class="card">
+            <h3>Tomografia Computadorizada</h3>
+            <p class="muted">Protocolos, CTDI/DLP, reconstruções e estratégias de redução de dose.</p>
+          </div>
+          <div class="card">
+            <h3>Ressonância Magnética</h3>
+            <p class="muted">Padronização de sequências, segurança MR, QA e artefatos.</p>
+          </div>
+          <div class="card">
+            <h3>Ultrassonografia</h3>
+            <p class="muted">Boas práticas, QA de sondas e documentação.</p>
+          </div>
+          <div class="card">
+            <h3>Medicina Nuclear</h3>
+            <p class="muted">Proteção radiológica, controle de qualidade e rotinas de dose.</p>
+          </div>
+          <div class="card">
+            <h3>Radioterapia</h3>
+            <p class="muted">Comissionamento, verificação independente e indicadores clínicos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cursos -->
+    <section id="cursos" class="section">
+      <div class="container">
+        <h2>Cursos e Trilhas</h2>
+        <p class="lead">Formatos presenciais ou on-line. Emissão de certificado e material de apoio.</p>
+        <div class="grid grid-3" style="margin-top:18px">
+          <article class="card">
+            <h3>Programa de Educação Permanente</h3>
+            <p class="muted">Módulos anuais cobrindo normas, segurança do paciente, QA e proteção radiológica.</p>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <a href="#contato" class="btn btn-primary">Solicitar cronograma</a>
+              <a href="#" class="btn btn-ghost" aria-disabled="true">Ementa (PDF)</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Qualidade em TC</h3>
+            <p class="muted">Escolha de protocolos, reconstrução com filtros, medição de CTDI e otimização.</p>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <a href="#contato" class="btn btn-primary">Turmas abertas</a>
+              <a href="#" class="btn btn-ghost" aria-disabled="true">Programa</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Segurança em RM</h3>
+            <p class="muted">Práticas essenciais, zonas MR, checklist e gestão de incidentes.</p>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <a href="#contato" class="btn btn-primary">Fale com a equipe</a>
+              <a href="#" class="btn btn-ghost" aria-disabled="true">Conteúdo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materiais -->
+    <section id="materiais" class="section" style="background:var(--bg-soft)">
+      <div class="container">
+        <h2>Materiais gratuitos</h2>
+        <p class="lead">Apostilas e checklists para uso educacional.</p>
+        <div class="list" style="margin-top:14px">
+          <a href="#" aria-disabled="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            <span><strong>Checklist de QA em TC</strong><br/><span class="muted">PDF • 2 páginas</span></span>
+          </a>
+          <a href="#" aria-disabled="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            <span><strong>Mapa mental: Proteção Radiológica</strong><br/><span class="muted">PDF • 1 página</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="section">
+      <div class="container">
+        <h2>Fale conosco</h2>
+        <p class="lead">Envie sua mensagem. Retornamos em até 1 dia útil.</p>
+        <div class="contact-grid" style="margin-top:12px">
+          <div class="card">
+            <form method="post" action="mailto:contato@quantumfismed.com.br" enctype="text/plain">
+              <!-- Para usar sem backend, o mailto abre o cliente de e-mail. Para formulários com envio automático, substitua por Formspree/Netlify. -->
+              <label>
+                <span>Nome</span>
+                <input name="nome" placeholder="Seu nome" required />
+              </label>
+              <label>
+                <span>E-mail</span>
+                <input type="email" name="email" placeholder="voce@exemplo.com" required />
+              </label>
+              <label>
+                <span>Mensagem</span>
+                <textarea name="mensagem" placeholder="Como podemos ajudar?" required></textarea>
+              </label>
+              <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Outros canais</h3>
+            <p class="muted">E-mail: <a href="mailto:contato@quantumfismed.com.br">contato@quantumfismed.com.br</a><br/>WhatsApp: <a href="#" aria-disabled="true">(51) 9 9999-9999</a></p>
+            <p class="muted">Porto Alegre • Atendimento on-line para todo o Brasil</p>
+            <div style="margin-top:10px">
+              <a class="btn btn-ghost" href="#topo">Voltar ao topo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div class="small">© <span id="y"></span> Quantum FisMed. Todos os direitos reservados.</div>
+      <div class="small">Design claro, sem lousa. Conteúdo científico e objetivo.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Menu mobile
+    const header = document.querySelector('header');
+    const btn = document.getElementById('btnMenu');
+    btn?.addEventListener('click', () => {
+      const open = header.getAttribute('data-open') === 'true';
+      header.setAttribute('data-open', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    // Ano dinâmico no rodapé
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

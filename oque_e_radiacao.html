@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>O que é radiação? — Quantum FisMed</title>
+  <meta name="description" content="Entenda o que é radiação, tipos (ionizante e não ionizante), unidades, fontes e aplicações médicas. Conteúdo simples, claro e sem lousa." />
+  <style>
+    :root{
+      --bg:#ffffff;--bg-soft:#f8fafc;--brand:#0ea5e9;--brand-600:#0284c7;--text:#0f172a;--muted:#64748b;--ring:#bae6fd;--card:#ffffff;
+      --shadow:0 8px 24px rgba(15,23,42,.08);--radius:16px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg)}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:900px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid #e2e8f0;z-index:50}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo-mark{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;background:#0f172a;color:#fff;box-shadow:var(--shadow)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0}
+    .btn-primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn-primary:hover{background:var(--brand-600)}
+    main{padding:40px 0}
+    h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin:0 0 6px}
+    .lead{color:var(--muted);margin:0 0 20px}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .toc{display:grid;gap:8px;margin:16px 0}
+    .toc a{color:#334155}
+    section{padding:28px 0;border-top:1px solid #e2e8f0}
+    section:first-of-type{border-top:none}
+    h2{margin:0 0 8px}
+    p{color:#334155}
+    ul{color:#334155;line-height:1.7}
+    .note{background:var(--bg-soft);border:1px solid #e2e8f0;border-radius:12px;padding:12px;color:#0f172a}
+    footer{background:var(--bg-soft);border-top:1px solid #e2e8f0;color:#475569;margin-top:28px}
+    footer .container{padding:22px 20px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Voltar para a página inicial">
+        <span class="logo-mark">QF</span>
+        <span>Quantum FisMed</span>
+      </a>
+      <div style="display:flex;gap:10px">
+        <a class="btn" href="index.html#materiais">Materiais</a>
+        <a class="btn btn-primary" href="index.html#contato">Fale conosco</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>O que é radiação?</h1>
+      <p class="lead">Radiação é a <strong>transferência de energia</strong> por partículas ou ondas que se propagam pelo espaço ou por um meio material. Ela pode ser natural ou produzida pelo homem e tem aplicações essenciais na <strong>saúde</strong>, na indústria e na pesquisa.</p>
+
+      <div class="card" aria-label="Navegue pelos tópicos">
+        <strong>Tópicos desta página</strong>
+        <nav class="toc">
+          <a href="#tipos">Tipos: ionizante × não ionizante</a>
+          <a href="#particulas-ondas">Partículas × ondas</a>
+          <a href="#unidades">Unidades e grandezas</a>
+          <a href="#fontes">Fontes de radiação</a>
+          <a href="#medicina">Aplicações médicas</a>
+          <a href="#seguranca">Segurança e princípio ALARA</a>
+        </nav>
+      </div>
+
+      <section id="tipos">
+        <h2>Tipos: ionizante × não ionizante</h2>
+        <p><strong>Radiação ionizante</strong> possui energia suficiente para remover elétrons de átomos e moléculas, formando íons (ex.: raios X, raios gama, partículas α e β, nêutrons). Já a <strong>radiação não ionizante</strong> não tem energia para ionizar, mas interage por aquecimento ou excitação (ex.: rádio, micro-ondas, infravermelho, luz visível, ultravioleta A/B).</p>
+        <div class="note">Na saúde, usamos ionizantes em radiologia, tomografia, medicina nuclear e radioterapia. Não ionizantes aparecem na ressonância magnética (radiofrequência), ultrassom e fototerapia.</div>
+      </section>
+
+      <section id="particulas-ondas">
+        <h2>Partículas × ondas</h2>
+        <ul>
+          <li><strong>Partículas</strong>: elétrons (β⁻), pósitrons (β⁺), prótons, nêutrons, partículas α (núcleo de hélio). Têm massa e, em geral, trajetória definida.</li>
+          <li><strong>Ondas eletromagnéticas</strong>: fótons (raios X e γ). Não têm massa nem carga e se propagam à velocidade da luz.</li>
+        </ul>
+      </section>
+
+      <section id="unidades">
+        <h2>Unidades e grandezas</h2>
+        <ul>
+          <li><strong>Atividade</strong> (emissões por segundo): <em>Becquerel</em> (Bq).</li>
+          <li><strong>Exposição</strong> a fótons no ar: <em>coulomb por quilograma</em> (C/kg).</li>
+          <li><strong>Dose absorvida</strong>: <em>Gray</em> (Gy) — energia depositada por massa.</li>
+          <li><strong>Dose equivalente/efetiva</strong>: <em>Sievert</em> (Sv) — pondera o tipo de radiação e a sensibilidade dos tecidos.</li>
+        </ul>
+      </section>
+
+      <section id="fontes">
+        <h2>Fontes de radiação</h2>
+        <ul>
+          <li><strong>Naturais</strong>: radônio, radionuclídeos do solo (U, Th, K‑40), raios cósmicos, alimentos.</li>
+          <li><strong>Artificiais</strong>: equipamentos de raios X, fontes seladas para terapia/esterilização, reatores, aceleradores.</li>
+        </ul>
+      </section>
+
+      <section id="medicina">
+        <h2>Aplicações médicas</h2>
+        <ul>
+          <li><strong>Radiologia/TC</strong>: imagens anatômicas por atenuação de fótons.</li>
+          <li><strong>Medicina Nuclear</strong>: imagens funcionais (SPECT/PET) e terapias alvo-específicas.</li>
+          <li><strong>Radioterapia</strong>: feixes de fótons/partículas para controle tumoral.</li>
+          <li><strong>Ressonância Magnética</strong> e <strong>Ultrassom</strong>: diagnosticam sem ionização.</li>
+        </ul>
+      </section>
+
+      <section id="seguranca">
+        <h2>Segurança e princípio ALARA</h2>
+        <p>O uso seguro de radiação ionizante segue o princípio <strong>ALARA</strong> (As Low As Reasonably Achievable): manter exposições tão baixas quanto razoavelmente exequível, por meio de <em>tempo</em> reduzido, <em>distância</em> aumentada e <em>blindagem</em> adequada. Em serviços de saúde, protocolos, treinamento e controle de qualidade são essenciais.</p>
+        <div class="note">Dica: sempre avalie <strong>justificativa</strong>, <strong>otimização</strong> e <strong>limitação</strong> de dose. Paciente no centro do cuidado.</div>
+      </section>
+
+      <div style="margin-top:20px;display:flex;gap:10px">
+        <a class="btn" href="#topo">Voltar ao topo</a>
+        <a class="btn btn-primary" href="index.html#contato">Quero falar com a equipe</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Quantum FisMed — Página educativa. Sem lousa, linguagem clara.</div>
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Atividade Radioativa — Calculadora & Explicação</title>
+  <meta name="description" content="Explicação e cálculo da atividade radioativa A(t)=A0 e^{-λ t}. Conversor Bq ↔ Ci." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#38bdf8; --muted:#9aa6b2; --glass: rgba(255,255,255,0.03);
+      --maxw:900px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071127 0%, #071a2b 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+    }
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#002126;box-shadow:0 6px 20px rgba(18,28,45,0.6);
+    }
+    h1{font-size:20px;margin:0}
+    p.lead{color:var(--muted);margin:4px 0 0;font-size:14px}
+    main{display:grid;grid-template-columns:1fr;gap:16px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);
+    }
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type="number"], input[type="text"], select{
+      width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.02);color:inherit;font-size:14px;
+    }
+    .btn{
+      display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#002126;font-weight:600;border:none;
+      cursor:pointer;margin-top:8px;
+    }
+    .result{margin-top:10px;padding:12px;border-radius:8px;background:var(--glass);color:#dff7ff}
+    .muted{color:var(--muted);font-size:13px}
+    footer{margin-top:12px;color:var(--muted);font-size:12px}
+    pre.code{white-space:pre-wrap;background:#071423;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);overflow:auto}
+    @media (max-width:800px){ .grid-2{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">A</div>
+      <div>
+        <h1>Atividade Radioativa — calculadora interativa</h1>
+        <p class="lead">Lei do decaimento exponencial: <strong>A(t) = A₀ · e<sup>-λ t</sup></strong></p>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Resumo rápido</h2>
+        <p class="muted">Atividade (<strong>A</strong>) é o número de desintegrações por unidade de tempo. Unidade SI: <strong>Becquerel (Bq)</strong> = 1 desintegração/segundo. Unidade tradicional: <strong>Curie (Ci)</strong>, com <strong>1 Ci = 3,7×10<sup>10</sup> Bq</strong>.</p>
+        <p class="muted">Decaimento: <strong>A(t)=A₀·e<sup>-λt</sup></strong>, onde λ é a constante de decaimento (s⁻¹). A meia-vida \(t_{1/2}\) relaciona-se com λ por \(t_{1/2} = \dfrac{\ln 2}{\lambda}\).</p>
+      </section>
+
+      <section class="card grid-2">
+        <div>
+          <h3>Calculadora de decaimento</h3>
+          <label for="A0">Atividade inicial A₀</label>
+          <input id="A0" type="number" step="any" placeholder="ex: 1000" />
+          <label for="unitA0">Unidade</label>
+          <select id="unitA0">
+            <option value="Bq">Bq</option>
+            <option value="Ci">Ci</option>
+          </select>
+
+          <label for="lambda">Constante λ (s⁻¹) — deixe vazio se usar meia-vida</label>
+          <input id="lambda" type="number" step="any" placeholder="ex: 0.000123" />
+
+          <label for="half">Meia-vida t₁/₂ (segundos) — opcional</label>
+          <input id="half" type="number" step="any" placeholder="ex: 3600 (1 h)" />
+
+          <label for="time">Tempo t (segundos)</label>
+          <input id="time" type="number" step="any" placeholder="ex: 7200" />
+
+          <button id="calc" class="btn">Calcular A(t)</button>
+          <div id="out" class="result" aria-live="polite">Resultado aparecerá aqui.</div>
+        </div>
+
+        <div>
+          <h3>Conversor Bq ↔ Ci</h3>
+          <label for="valConv">Valor</label>
+          <input id="valConv" type="number" step="any" placeholder="ex: 1000" />
+          <label for="convDir">Converter de → para</label>
+          <select id="convDir">
+            <option value="BqToCi">Bq → Ci</option>
+            <option value="CiToBq">Ci → Bq</option>
+          </select>
+          <button id="convBtn" class="btn">Converter</button>
+          <div id="convOut" class="result">Conversão aparecerá aqui.</div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)" />
+          <p class="muted"><strong>Dicas práticas:</strong> insira unidades consistentes (se A₀ em Ci, escolha Ci). Para apresentar A(t) em Bq, converta A₀ para Bq antes do cálculo.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Exemplo rápido</h3>
+        <p class="muted">Se A₀ = 1 Ci (→ 3.7×10<sup>10</sup> Bq) e λ = 0.0001 s⁻¹, em t = 3600 s (1 h): A(t) = A₀ e<sup>-λt</sup> ≈ 3.7×10<sup>10</sup> · e<sup>-0.36</sup> ≈ ...</p>
+        <pre class="code" id="exampleArea"></pre>
+      </section>
+
+      <footer class="card muted">
+        Fórmulas: A(t)=A₀·e<sup>-λt</sup> — meia-vida: t₁/₂ = ln(2)/λ — conversão: 1 Ci = 3.7×10<sup>10</sup> Bq.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // constantes
+    const CI_TO_BQ = 3.7e10;
+    const BQ_TO_CI = 1 / CI_TO_BQ;
+
+    function formatScientific(x){
+      if (!isFinite(x)) return "valor inválido";
+      if (Math.abs(x) >= 1e5 || (Math.abs(x) > 0 && Math.abs(x) < 1e-3)){
+        return x.toExponential(6);
+      }
+      return Number(x.toPrecision(8)).toString();
+    }
+
+    document.getElementById('calc').addEventListener('click', ()=>{
+      const A0raw = Number(document.getElementById('A0').value);
+      const unit = document.getElementById('unitA0').value;
+      let lambda = Number(document.getElementById('lambda').value);
+      const half = Number(document.getElementById('half').value);
+      const t = Number(document.getElementById('time').value);
+
+      const out = document.getElementById('out');
+
+      if (!A0raw || A0raw <= 0){ out.textContent = "Insira A₀ > 0."; return; }
+      if ((!lambda || lambda <= 0) && (!half || half <= 0)){ out.textContent = "Insira λ > 0 ou meia-vida t₁/₂ > 0."; return; }
+      if (!isFinite(t) || t < 0){ out.textContent = "Insira tempo t ≥ 0."; return; }
+
+      // calcular λ se meia-vida for fornecida
+      if ((!lambda || lambda <= 0) && (half && half > 0)){
+        lambda = Math.log(2) / half;
+      }
+
+      // converter A0 para Bq se necessário
+      let A0 = A0raw;
+      if (unit === 'Ci') A0 = A0raw * CI_TO_BQ;
+
+      // A(t) = A0 * e^{-lambda t}
+      const At = A0 * Math.exp(-lambda * t);
+
+      // apresentar em Bq e Ci
+      const AtBq = At;
+      const AtCi = At * BQ_TO_CI;
+
+      out.innerHTML = `<strong>A(t):</strong><br>
+        ${formatScientific(AtBq)} Bq<br>
+        ${formatScientific(AtCi)} Ci<br>
+        (usando λ = ${lambda.toExponential ? lambda.toExponential(6) : lambda})`;
+    });
+
+    document.getElementById('convBtn').addEventListener('click', ()=>{
+      const val = Number(document.getElementById('valConv').value);
+      const dir = document.getElementById('convDir').value;
+      const out = document.getElementById('convOut');
+      if (!isFinite(val)){ out.textContent = "Insira um número válido."; return; }
+      if (dir === 'BqToCi'){
+        out.innerHTML = `<strong>${formatScientific(val)} Bq = ${formatScientific(val * BQ_TO_CI)} Ci</strong>`;
+      } else {
+        out.innerHTML = `<strong>${formatScientific(val)} Ci = ${formatScientific(val * CI_TO_BQ)} Bq</strong>`;
+      }
+    });
+
+    // exemplo preenchido
+    (function example(){
+      const A0ci = 1;
+      const lambda = 0.0001;
+      const t = 3600;
+      const A0bq = A0ci * CI_TO_BQ;
+      const At = A0bq * Math.exp(-lambda * t);
+      document.getElementById('exampleArea').textContent = `A₀ = ${A0ci} Ci = ${formatScientific(A0bq)} Bq
+λ = ${lambda} s⁻¹
+t = ${t} s
+A(t) = ${formatScientific(At)} Bq = ${formatScientific(At * BQ_TO_CI)} Ci`;
+    })();
+  </script>
+</body>
+</html>
